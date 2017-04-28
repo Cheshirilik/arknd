@@ -20,8 +20,8 @@ class GameObject(object):
 class TheBall(GameObject):
     def __init__(self, canvas, x, y):
         self.radius = 10
-        self.direction = [-1, 1]
-        self.speed = 10
+        self.direction = [1, -1]
+        self.speed = 7
 
         item = canvas.create_oval(x-self.radius, y-self.radius,
                                   x+self.radius, y+self.radius,
@@ -55,7 +55,7 @@ class TheBall(GameObject):
             elif x < coords[0]:
                 self.direction[0] = -1
             else:
-                self.direction[0] *= -1
+                self.direction[1] *= -1
 
         for obj in game_objects:
             if isinstance(obj, TheBrick):
@@ -202,8 +202,8 @@ class Game(tk.Frame):
         self.hud = None
         self.setup_game()
         self.canvas.focus_set()
-        self.canvas.bind("<Left>", lambda _ : self.paddle.move(-10))
-        self.canvas.bind("<Right>", lambda _: self.paddle.move(10))
+        self.canvas.bind("<Left>", lambda _ : self.paddle.move(-20))
+        self.canvas.bind("<Right>", lambda _: self.paddle.move(20))
 
 
 if __name__ == '__main__':
